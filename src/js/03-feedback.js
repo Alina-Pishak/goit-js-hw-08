@@ -21,13 +21,17 @@ function inStorage() {
 
 function onSubmit(evt) {
     evt.preventDefault();
-    const data = {
-        email: email.value,
-        message: message.value
+     if ((email.value.length && message.value.length) < 1) {
+         alert('Всі поля повинні бути заповнені!');
+     } else {
+         const data = {
+             email: email.value,
+             message: message.value
+         }
+         console.log(data);
+         evt.currentTarget.reset();
+         localStorage.removeItem('feedback-form-state');
     }
-    console.log(data);
-    evt.currentTarget.reset();
-    localStorage.clear();
 
 }
 
